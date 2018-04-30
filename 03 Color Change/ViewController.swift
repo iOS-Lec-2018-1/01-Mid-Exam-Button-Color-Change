@@ -9,17 +9,32 @@
 import UIKit
 
 class ViewController: UIViewController {
-
+    @IBOutlet weak var colorLabel: UILabel!
+    var color = ["흰색","초록", "노랑"]
+    var count = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        colorLabel.text = color[0]
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    @IBAction func changeColor(_ sender: Any) {
+    
+        count = count + 1
+        if count == 3 {
+            count = 0
+        }
+        colorLabel.text = color[count]
+        
+        switch count {
+        case 1:
+            view.backgroundColor = UIColor.green
+        case 2:
+            view.backgroundColor = UIColor.yellow
+        default:
+            view.backgroundColor = UIColor.white
+        }
     }
-
-
 }
 
